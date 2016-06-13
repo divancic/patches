@@ -1,0 +1,61 @@
+diff --git a/arch/arm/boot/dts/imx6qdl-apalis.dtsi b/arch/arm/boot/dts/imx6qdl-apalis.dtsi
+index 289f9ef..240a45f 100644
+--- a/arch/arm/boot/dts/imx6qdl-apalis.dtsi
++++ b/arch/arm/boot/dts/imx6qdl-apalis.dtsi
+@@ -81,8 +81,8 @@
+ 	mxcfb1: fb@0 {
+ 		compatible = "fsl,mxc_sdc_fb";
+ 		disp_dev = "ldb";
+-		interface_pix_fmt = "RGB666";
+-		default_bpp = <16>;
++		interface_pix_fmt = "RGB24";
++		default_bpp = <32>;
+ 		int_clk = <0>;
+ 		late_init = <0>;
+ 		status = "disabled";
+@@ -995,13 +995,13 @@
+ 
+ &ldb {
+ 	status = "okay";
+-//	split-mode;
++	split-mode;
+ //	dual-mode;
+ 
+ 	lvds-channel@0 {
+ 		reg = <0>;
+ 		fsl,data-mapping = "spwg"; /* "jeida"; */
+-		fsl,data-width = <18>;
++		fsl,data-width = <24>;
+ 		crtc = "ipu2-di1";
+ 		primary;
+ 		status = "okay";
+@@ -1025,7 +1025,6 @@
+ 				vsync-active = <0>;
+ 				pixelclk-active = <0>;
+ 			};
+-#endif
+ 			/* Standard XGA timing */
+ 			timing_xga: 1024x768 {
+ 				clock-frequency = <65000000>;
+@@ -1069,6 +1068,21 @@
+ 				vsync-active = <0>;
+ 				pixelclk-active = <0>;
+ 			};
++#endif
++			timing_HV101WU11E6: 1920x1200 {
++				clock-frequency = <154000000>;
++				hactive = <1920>;
++				vactive = <1200>;
++				hback-porch = <80>;
++				hfront-porch = <80>;
++				vback-porch = <15>;
++				vfront-porch = <20>;
++				hsync-len = <10>;
++				vsync-len = <10>;
++				hsync-active = <0>;
++				vsync-active = <0>;
++				pixelclk-active = <0>;
++			};
+ 		};
+ 	};
+ 
